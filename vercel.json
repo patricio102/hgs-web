@@ -1,0 +1,6 @@
+{
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "python3 _build.py public site",
+  "outputDirectory": "public"
+}
