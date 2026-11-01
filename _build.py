@@ -89,6 +89,7 @@ PHOTOS = {
     "contenedor-puerta": ("Contenedor cargado con pallets, listo para cerrar y sellar", "Container loaded with pallets, ready to be closed and sealed", "50% 50%"),
     "saco-escombros": ("Sacos de escombros en obra, cargados en camioneta", "Debris sacks on a building site, loaded onto a truck", "50% 50%"),
     "escala-bodega": ("Escala articulada DRAVIK 4x3 en uso como andamio", "DRAVIK 4x3 folding ladder used as a scaffold", "50% 55%"),
+    "equipo-patricio-phoebe": ("Patricio Campos y Phoebe, el equipo de HGS en China", "Patricio Campos and Phoebe, the HGS team in China", "50% 58%"),
     "stand-feria": ("Visita a un proveedor en su stand de la Feria de Cant\u00f3n", "Visiting a supplier at their Canton Fair booth", "50% 8%"),
     "patio-alambre": ("Patricio Campos en el patio de una f\u00e1brica de alambre", "Patricio Campos in the yard of a wire factory", "50% 55%"),
     "bodega-palas": ("Bodega de una f\u00e1brica de palas", "Warehouse of a shovel factory", "50% 35%"),
@@ -276,8 +277,8 @@ def page_home(lang):
   {photo(lang, "feria-herramientas", "tall")}
   <div class="text">
     <p class="eyebrow" id="founder">{"El fundador" if es else "The founder"}</p>
-    <h2>{"Más de 20 años creando marcas propias para el retail ferretero latinoamericano." if es else "Over 20 years creating private labels for Latin American hardware retail."}</h2>
-    <p class="lead" style="font-size:1.05rem">{"Lideró el desarrollo de KUTZ, Bauker, Redline, Humboldt y Dairu, y de cientos de productos." if es else "He led the development of KUTZ, Bauker, Redline, Humboldt and Dairu, and of hundreds of products."}</p>
+    <h2>{"Más de 20 años creando marcas propias para el mundo ferretero latinoamericano." if es else "Over 20 years creating private labels for the Latin American hardware world."}</h2>
+    <p class="lead" style="font-size:1.05rem">{"Lideró el desarrollo de Kutz, Bauker, Redline, Humboldt y Dairu, y de cientos de productos." if es else "He led the development of Kutz, Bauker, Redline, Humboldt and Dairu, and of hundreds of products."}</p>
     <div><p class="founder-name">Patricio Campos Araya</p><p class="founder-role">{"Fundador y Director General" if es else "Founder and CEO"}</p></div>
     <a class="textlink" href="{href("about", lang)}">{"Conoce al equipo" if es else "Meet the team"} →</a>
   </div>
@@ -429,22 +430,21 @@ def page_about(lang):
 
 <section class="section rule" aria-labelledby="team"><div class="wrap">
   <div class="sec-head"><p class="eyebrow">{"Equipo" if es else "Team"}</p><h2 id="team">{"Quiénes están detrás" if es else "Who is behind HGS"}</h2></div>
+  {photo(lang, "equipo-patricio-phoebe", "wide team-photo")}
   <div class="people">
     <article class="person">
-      {ph(lang, "Foto profesional de Patricio (por confirmar)" if es else "Professional photo of Patricio (to be confirmed)", "tall")}
       <div class="info">
         <p class="founder-role">{"Fundador y Director General · Chile" if es else "Founder and CEO · Chile"}</p>
         <h3>Patricio Campos Araya</h3>
-        <p>{"Más de 20 años creando marcas propias para el retail ferretero y de construcción latinoamericano. Lideró el desarrollo de KUTZ, Bauker, Redline, Humboldt y Dairu, y de cientos de productos." if es else "Over 20 years creating private labels for Latin American hardware and construction retail. He led the development of KUTZ, Bauker, Redline, Humboldt and Dairu, and of hundreds of products."}</p>
-        <p>{"Su trayectoria incluye experiencia con Argentina, México y Paraguay." if es else "His career includes experience with Argentina, Mexico and Paraguay."}</p>
+        <p>{"Más de 20 años creando marcas propias para el mundo ferretero y de la construcción en Latinoamérica. Lideró el desarrollo de Kutz, Bauker, Redline, Humboldt y Dairu, y de cientos de productos." if es else "Over 20 years creating private labels for the Latin American hardware and construction world. He led the development of Kutz, Bauker, Redline, Humboldt and Dairu, and of hundreds of products."}</p>
+        <p>{"Su trayectoria incluye proyectos en Chile, Perú, Paraguay, Colombia, Ecuador y México." if es else "His career includes projects in Chile, Peru, Paraguay, Colombia, Ecuador and Mexico."}</p>
       </div>
     </article>
     <article class="person">
-      {ph(lang, "Foto de Phoebe (pendiente de su autorización)" if es else "Photo of Phoebe (pending her approval)", "tall")}
       <div class="info">
         <p class="founder-role">{"Directora de Operaciones en China" if es else "Director of Operations, China"}</p>
         <h3>Phoebe {pend(lang, "apellido por confirmar", "surname to be confirmed")}</h3>
-        <div class="pend-box">{"Trayectoria, foto y autorización para aparecer en la web por confirmar con Phoebe." if es else "Background, photo and approval to appear on the site to be confirmed with Phoebe."}</div>
+        <div class="pend-box">{"Trayectoria y apellido por confirmar con Phoebe." if es else "Background and surname to be confirmed with Phoebe."}</div>
       </div>
     </article>
   </div>
@@ -452,7 +452,7 @@ def page_about(lang):
 
 <section class="section tint" aria-labelledby="brands"><div class="wrap">
   <div class="sec-head"><h2 id="brands">{"Marcas en cuyo desarrollo participó el fundador" if es else "Brands the founder helped develop"}</h2></div>
-  <div class="brands"><span>KUTZ</span><span>Bauker</span><span>Redline</span><span>Humboldt</span><span>Dairu</span></div>
+  <div class="brands"><span>Kutz</span><span>Bauker</span><span>Redline</span><span>Humboldt</span><span>Dairu</span></div>
   <p style="margin-top:14px;color:var(--muted);font-size:.9rem">{"Trayectoria personal del fundador. No son clientes de HGS." if es else "The founder's personal track record. These are not HGS clients."}</p>
 </div></section>
 
