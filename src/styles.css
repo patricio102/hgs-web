@@ -291,3 +291,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .photo.tall { aspect-ratio: 4 / 5; }
 .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .stage-media > :first-child { grid-column: 1 / -1; }
+
+/* Ilustración del mix de herrajes */
+.hx-fig { margin: 0; background: var(--tint); padding: clamp(8px, 1.5vw, 14px); }
+.hx { display: block; width: 100%; height: auto; }

@@ -40,6 +40,7 @@ ICONS = {
 CAM = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13.5" r="3.5"/></svg>'
 
 from hgs_logo import LOGO_RINGS, LOGO_HGS, LOGO_TAG, LOGO_LINE  # logo vectorial HGS
+from hgs_herrajes import herrajes_svg  # ilustración del mix de herrajes (caso destacado)
 
 def logo(full=False, label="HGS Hardware Global Sourcing"):
     if full:
@@ -187,7 +188,7 @@ def page_home(lang):
     <div class="pend-box">{"Detalle del caso por redactar (sin nombre del cliente)." if es else "Case details to be written (without the client's name)."}</div>
     <a class="textlink" href="{href("cases", lang)}">{"Ver casos de éxito" if es else "See case studies"} →</a>
   </div>
-  {ph(lang, "Línea de herrajes desarrollada, sin marca del cliente" if es else "Hardware line developed, client brand not shown", "wide")}
+  <figure class="hx-fig">{herrajes_svg(lang)}</figure>
 </div></section>
 
 <section class="section rule" aria-labelledby="founder"><div class="wrap split">
