@@ -89,17 +89,65 @@ PHOTOS = {
     "soldadura": ("Control en l\u00ednea de producci\u00f3n: soldadura en f\u00e1brica", "In-line production check: welding at the factory", "60% 40%"),
     "sacos-bodega": ("Sacos terminados en bodega, listos para embarque", "Finished sacks in the warehouse, ready to ship", "50% 50%"),
     "feria-cerrajeria": ("Stand de cerrajer\u00eda y candados de seguridad en feria", "Locks and safety padlocks booth at a trade fair", "50% 22%"),
+    "carga-contenedor": ("Carga de pallets en el contenedor antes del embarque", "Loading pallets into the container before shipping", "50% 45%"),
 }
 
 def photo(lang, key, cls=""):
-    es_alt, en_alt, pos = PHOTOS[key]
     pre = "" if lang == "es" else "../"
+    if key not in PHOTOS:  # foto de producto cuadrada
+        alt = T(lang, PRODUCTS[key])
+        return f'<figure class="photo {cls}"><img src="{pre}img/productos/{key}.webp" alt="{alt}" loading="lazy" decoding="async"></figure>'
+    es_alt, en_alt, pos = PHOTOS[key]
     alt = es_alt if lang == "es" else en_alt
     return f'<figure class="photo {cls}"><img src="{pre}img/{key}.webp" alt="{alt}" loading="lazy" decoding="async" style="object-position:{pos}"></figure>'
 
 def media(lang, item, cls=""):
     """item: clave de PHOTOS (foto real) o par (es, en) para un marcador pendiente."""
     return photo(lang, item, cls) if isinstance(item, str) else ph(lang, T(lang, item), cls)
+
+# Fotos de producto (zip v2, 01-nov-2026), cuadradas 800 px en src/img/productos/. Sin marcas de clientes;
+# las escalas muestran DRAVIK, marca propia de HGS. Clave: (alt es, alt en).
+PRODUCTS = {
+    "bisagra-cazoleta-a": ("Bisagra de cazoleta con cierre suave", "Soft-close concealed cup hinge"),
+    "bisagra-cazoleta-b": ("Bisagra de cazoleta y base", "Concealed cup hinge and mounting plate"),
+    "bisagra-cazoleta-c": ("Bisagra de cazoleta", "Concealed cup hinge"),
+    "corredera-telescopica": ("Correderas telescópicas", "Telescopic drawer slides"),
+    "corredera-rodillo": ("Correderas de rodillo", "Roller drawer runners"),
+    "perilla": ("Perillas", "Knobs"),
+    "tirador-a": ("Tirador embutido", "Recessed pull handle"),
+    "tirador-b": ("Tirador de acero inoxidable", "Stainless steel pull handle"),
+    "pata": ("Pata de mueble", "Furniture leg"),
+    "cerradura": ("Cerradura de mueble", "Furniture lock"),
+    "cargador-usb": ("Cargador USB de escritorio", "Desk USB charger"),
+    "cargador-inalambrico": ("Cargador inalámbrico de escritorio", "Desk wireless charger"),
+    "plataforma-a": ("Plataforma de carga ensamblable", "Modular moving dolly"),
+    "plataforma-b": ("Plataforma de carga con manilla", "Moving dolly with handle"),
+    "prensa-esquinera": ("Prensa esquinera", "Corner clamp"),
+    "guia-bisagras": ("Guía de instalación de bisagras", "Hinge drilling jig"),
+    "plantilla-bisagras": ("Plantilla de instalación de bisagras", "Hinge installation template"),
+    "saco-rojo": ("Saco de polipropileno rojo", "Red polypropylene sack"),
+    "saco-blanco": ("Saco de polipropileno blanco", "White polypropylene sack"),
+    "escala-articulada": ("Escala articulada de aluminio DRAVIK", "DRAVIK folding aluminum ladder"),
+    "escala-tijera": ("Escala tijera de aluminio DRAVIK", "DRAVIK aluminum step ladder"),
+    "piso-2-peldanos": ("Piso de 2 peldaños DRAVIK", "DRAVIK 2-step stool"),
+    "escala-ferreteria": ("Escala articulada DRAVIK en ferretería", "DRAVIK folding ladder at a hardware store"),
+    "escala-obra": ("Escala DRAVIK en obra", "DRAVIK ladder on a building site"),
+    "piso-garage": ("Piso DRAVIK en uso", "DRAVIK step stool in use"),
+    "escala-exterior": ("Escala tijera DRAVIK en uso", "DRAVIK step ladder in use"),
+    "clavo-granel": ("Clavos a granel en caja de exportación", "Bulk nails in an export carton"),
+    "clavo-medicion": ("Medición de clavos con pie de metro", "Measuring nails with a caliper"),
+    "clavo-techo-medicion": ("Medición de clavo de techo en inspección", "Measuring a roofing nail during inspection"),
+}
+
+def tile(lang, key, caption=True):
+    """Mosaico cuadrado: foto de producto (PRODUCTS) o foto de terreno (PHOTOS)."""
+    pre = "" if lang == "es" else "../"
+    if key in PRODUCTS:
+        alt, src = T(lang, PRODUCTS[key]), f"{pre}img/productos/{key}.webp"
+    else:
+        alt, src = T(lang, PHOTOS[key][:2]), f"{pre}img/{key}.webp"
+    cap = f"<figcaption>{alt}</figcaption>" if caption else ""
+    return f'<figure><img src="{src}" alt="{alt}" loading="lazy" decoding="async" width="800" height="800">{cap}</figure>'
 
 STAGES = [
     ("define",
@@ -130,15 +178,14 @@ STAGES = [
       "Technical specs, in-production control and pre-shipment inspection."),
      (["Fichas técnicas", "Control en producción", "Inspección antes del embarque"],
       ["Technical specs", "In-production control", "Pre-shipment inspection"]),
-     ["soldadura", ("Informe de inspección real, con datos de clientes tapados", "Real inspection report, client data covered"),
-      ("Ficha técnica", "Technical spec sheet")]),
+     ["soldadura", "clavo-techo-medicion", "clavo-medicion"]),
     ("ship",
      ("Embarcar y entregar", "Ship and deliver"),
      ("Consolidamos la carga (incluso en contenedores mixtos), coordinamos el embarque y lo seguimos hasta tu bodega.",
       "We consolidate cargo (including mixed containers), coordinate shipping and track it all the way to your warehouse."),
      (["Consolidación, incluso contenedores mixtos", "Coordinación del embarque", "Seguimiento hasta tu bodega"],
       ["Consolidation, including mixed containers", "Shipping coordination", "Tracking to your warehouse"]),
-     ["sacos-bodega", ("Carga de contenedor (foto por definir)", "Container loading (photo to be chosen)")]),
+     ["carga-contenedor", "sacos-bodega"]),
 ]
 
 CTA = ("Conversemos tu proyecto", "Let's talk about your project")
@@ -191,6 +238,13 @@ def page_home(lang):
     <div><p class="big">{"Más de 20 años de red" if es else "A network built over 20+ years"}</p><p>{"Ferias, fábricas y contactos construidos en la trayectoria de nuestro equipo." if es else "Trade fairs, factories and contacts built over our team's career."}</p></div>
     <div><p class="big">{"Un solo socio" if es else "One single partner"}</p><p>{"Respondemos por el resultado completo, de la idea a tu bodega." if es else "We are accountable for the whole result, from idea to your warehouse."}</p></div>
   </div>
+</div></section>
+
+<section class="section" aria-labelledby="range"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">{"Lo que ya hemos desarrollado" if es else "What we have already developed"}</p>
+  <h2 id="range">{"Productos reales, vendidos y con ficha técnica, de los herrajes a la obra." if es else "Real products, sold and fully specified, from furniture fittings to the building site."}</h2></div>
+  <div class="pgrid pgrid-4">{"".join(tile(lang, k) for k in HOME_RANGE)}</div>
+  <p style="margin-top:28px"><a class="textlink" href="{href("cats", lang)}">{"Ver todas las categorías" if es else "See all categories"} →</a></p>
 </div></section>
 
 <section class="section tint" aria-labelledby="path"><div class="wrap">
@@ -250,29 +304,70 @@ def page_how(lang):
 <section class="section"><div class="wrap">{"".join(blocks)}</div></section>
 {cta_band(lang)}'''
 
+HOME_RANGE = ["bisagra-cazoleta-b", "corredera-telescopica", "tirador-a", "cargador-inalambrico",
+              "escala-articulada", "clavo-granel", "saco-rojo", "plataforma-a"]
+
+# Familias aprobadas por Pato (01-nov-2026). (nombre es/en, descripción es/en, subproductos es/en, fotos)
+# Una foto es una clave de PRODUCTS o PHOTOS, o un par (es, en) para un marcador pendiente.
 CATS = [
-    ("Herrajes para muebles", "Furniture hardware"),
-    ("Cerrajería", "Locks and security hardware", "feria-cerrajeria"),
-    ("Ferretería y fijaciones", "Hardware and fasteners", "patio-alambre"),
-    ("Escalas", "Ladders"),
-    ("Revestimientos y techumbre", "Cladding and roofing"),
-    ("Sacos y envases", "Sacks and packaging", "fabrica-sacos"),
+    (("Herrajes para muebles", "Furniture hardware"),
+     ("Nuestra familia más grande: muchos códigos vendidos a cadenas y distribuidores, cada uno con su ficha técnica.",
+      "Our largest family: many SKUs sold to retail chains and distributors, each with its own spec sheet."),
+     (["Bisagras de cazoleta", "Correderas telescópicas", "Correderas de rodillo", "Tiradores", "Perillas", "Patas", "Cerraduras de mueble", "Cargadores USB e inalámbricos de escritorio"],
+      ["Concealed cup hinges", "Telescopic drawer slides", "Roller drawer runners", "Pull handles", "Knobs", "Legs", "Furniture locks", "Desk USB and wireless chargers"]),
+     ["bisagra-cazoleta-a", "bisagra-cazoleta-b", "bisagra-cazoleta-c", "corredera-telescopica", "corredera-rodillo",
+      "tirador-a", "tirador-b", "perilla", "pata", "cerradura", "cargador-usb", "cargador-inalambrico"]),
+    (("Accesorios para mueblistas", "Accessories for furniture makers"),
+     ("Herramientas pensadas para el taller y la instalación: armar, mover e instalar muebles más rápido.",
+      "Tools for the workshop and on-site installation: build, move and install furniture faster."),
+     (["Plataformas de carga ensamblables", "Prensas esquineras", "Guías y plantillas de instalación de bisagras"],
+      ["Modular moving dollies", "Corner clamps", "Hinge drilling jigs and templates"]),
+     ["plataforma-a", "plataforma-b", "prensa-esquinera", "guia-bisagras", "plantilla-bisagras"]),
+    (("Escalas", "Ladders"),
+     ("Escalas articuladas, tijera y pisos de aluminio y acero, desarrollados bajo DRAVIK, nuestra marca propia.",
+      "Folding ladders, step ladders and step stools in aluminum and steel, developed under DRAVIK, our own brand."),
+     (["Escalas articuladas", "Escalas tijera", "Pisos de 2 y 3 peldaños"], ["Folding ladders", "Step ladders", "2- and 3-step stools"]),
+     ["escala-articulada", "escala-tijera", "piso-2-peldanos", "escala-ferreteria", "escala-obra", "piso-garage"]),
+    (("Clavos y fijaciones", "Nails and fasteners"),
+     ("Clavos a granel, en caja y en bolsa, y clavos de techo, medidos y pesados en cada inspección.",
+      "Bulk, boxed and bagged nails and roofing nails, measured and weighed at every inspection."),
+     (["Clavo corriente", "Clavo de techo", "Formatos a granel, caja de 25 kg y bolsa de 1 kg"], ["Common nails", "Roofing nails", "Bulk, 25 kg carton and 1 kg bag formats"]),
+     ["clavo-granel", "clavo-medicion", "clavo-techo-medicion"]),
+    (("Alambres y mallas", "Wire and mesh"),
+     ("Alambres para construcción y campo, y mallas para cierres.", "Wire for construction and farming, and mesh for fencing."),
+     (["Alambre de púas", "Alambre galvanizado", "Alambre recocido", "Malla hexagonal"], ["Barbed wire", "Galvanized wire", "Annealed wire", "Hexagonal mesh"]),
+     ["patio-alambre", ("Rollos de alambre y malla (foto en edición, sin marca del cliente)", "Wire and mesh rolls (photo being edited, client brand removed)")]),
+    (("Sacos y envases", "Sacks and packaging"),
+     ("Sacos de polipropileno tejido en distintos colores, medidas y gramajes.", "Woven polypropylene sacks in different colors, sizes and weights."),
+     (["Sacos de polipropileno", "Sacos para escombros"], ["Polypropylene sacks", "Debris sacks"]),
+     ["saco-rojo", "saco-blanco", "fabrica-sacos"]),
+    (("Cerrajería", "Locks and security hardware"),
+     ("Candados, cerraduras y seguridad, con fábricas evaluadas en feria y en planta.", "Padlocks, locks and security, with factories assessed at trade fairs and on site."),
+     (["Candados", "Cerraduras"], ["Padlocks", "Locks"]),
+     ["feria-cerrajeria"]),
 ]
+
+def cat_media(lang, item):
+    return tile(lang, item) if isinstance(item, str) else ph(lang, T(lang, item))
 
 def page_cats(lang):
     es = lang == "es"
-    cards = "".join(f'<article class="cat">{photo(lang, c[2]) if len(c) > 2 else ph(lang, ("Foto real: " if es else "Real photo: ") + T(lang, c).lower())}<h3>{T(lang, c)}</h3></article>' for c in CATS)
+    fams = []
+    for i, (name, desc, subs, pics) in enumerate(CATS, 1):
+        chips = "".join(f'<span class="chip">{x}</span>' for x in (subs[0] if es else subs[1]))
+        fams.append(f'''<article class="fam" id="fam-{i}">
+  <div class="fam-text"><p class="eyebrow">{i:02d}</p><h2>{T(lang, name)}</h2><p>{T(lang, desc)}</p><div class="meta">{chips}</div></div>
+  <div class="pgrid">{"".join(cat_media(lang, p) for p in pics)}</div>
+</article>''')
     return f'''
 <section class="page-hero"><div class="wrap">
   <p class="eyebrow">{"Categorías" if es else "Categories"}</p>
   <h1>{"Todo el mundo ferretero y de construcción, con un solo socio." if es else "The entire hardware and construction world, with one single partner."}</h1>
-  <p class="lead">{"Estas son las familias donde tenemos red y experiencia. Dentro del mundo ferretero y de construcción desarrollamos todas las categorías; fuera de él, ninguna." if es else "These are the families where we have a network and experience. Within hardware and construction we develop every category; outside it, none."}</p>
-  <p>{pend(lang, "Lista de familias por validar", "Family list to be validated")}</p>
+  <p class="lead">{"Estas son familias que ya hemos desarrollado, vendido y especificado. Dentro del mundo ferretero y de construcción desarrollamos todas las categorías; fuera de él, ninguna." if es else "These are families we have already developed, sold and specified. Within hardware and construction we develop every category; outside it, none."}</p>
 </div></section>
 <section class="section"><div class="wrap">
-  <div class="cats">{cards}</div>
+  <div class="fams">{"".join(fams)}</div>
   <div class="cat-close">
-    {pend(lang, "Frase por validar", "Sentence to be validated")}
     <p>{"¿Tu categoría no está aquí? Si es ferretería o construcción, sabemos cómo desarrollarla. Conversemos." if es else "Don't see your category? If it's hardware or construction, we know how to develop it. Let's talk."}</p>
     {cta(lang, note=False)}
   </div>
@@ -285,7 +380,7 @@ CASES = [
      ("Línea de herrajes, sin marca del cliente", "Hardware line, client brand not shown")),
     (("Escalas articuladas de aluminio DRAVIK", "DRAVIK folding aluminum ladders"),
      [("Escalas", "Ladders"), ("Marca propia HGS", "HGS own brand")],
-     ("Escala articulada DRAVIK", "DRAVIK folding ladder")),
+     "escala-obra"),
     (("Sacos de polipropileno", "Polypropylene sacks"),
      [("Sacos y envases", "Sacks and packaging")],
      "sacos-bodega"),

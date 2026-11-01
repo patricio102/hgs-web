@@ -298,3 +298,20 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .hx-grid figure { margin: 0; position: relative; background: #fff; overflow: hidden; }
 .hx-grid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
 .hx-grid figcaption { position: absolute; left: 0; bottom: 0; padding: 4px 8px; background: rgba(255,255,255,.92); color: var(--ink, #1b2a31); font: 600 .72rem/1.3 "IBM Plex Sans", system-ui, sans-serif; }
+
+/* Grillas de producto (rediseño con fotos v2) */
+.pgrid { display: grid; gap: clamp(6px, 1vw, 10px); grid-template-columns: repeat(auto-fill, minmax(min(46%, 150px), 1fr)); align-content: start; }
+.pgrid-4 { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 760px) { .pgrid-4 { grid-template-columns: repeat(4, 1fr); } }
+.pgrid figure { margin: 0; position: relative; background: #fff; border: 1px solid var(--line); overflow: hidden; }
+.pgrid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.pgrid figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 5px 8px; background: rgba(255,255,255,.92); color: var(--ink); font: 500 .74rem/1.3 var(--f-body); }
+.pgrid .ph { aspect-ratio: 1; }
+.fams { display: grid; }
+.fam { display: grid; gap: 24px; padding-block: 44px; border-top: 1px solid var(--line); }
+.fam:first-child { border-top: 0; padding-top: 0; }
+@media (min-width: 900px) { .fam { grid-template-columns: 4fr 8fr; gap: 56px; align-items: start; } .fam-text { position: sticky; top: 96px; } }
+.fam-text { display: grid; gap: 12px; align-content: start; }
+.fam-text h2 { font-size: clamp(1.45rem, 2.6vw, 1.9rem); }
+.fam-text p { color: var(--muted); }
+.fam-text .meta { display: flex; flex-wrap: wrap; gap: 8px; }
