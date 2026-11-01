@@ -189,17 +189,17 @@ STAGES = [
       ["Technical specs", "In-production control", "Pre-shipment inspection"]),
      ["soldadura", "clavo-techo-medicion", "clavo-medicion"]),
     ("ship",
-     ("Embarcar y entregar", "Ship and deliver"),
-     ("Consolidamos la carga (incluso en contenedores mixtos), coordinamos el embarque y lo seguimos hasta tu bodega.",
-      "We consolidate cargo (including mixed containers), coordinate shipping and track it all the way to your warehouse."),
-     (["Consolidación, incluso contenedores mixtos", "Coordinación del embarque", "Seguimiento hasta tu bodega"],
-      ["Consolidation, including mixed containers", "Shipping coordination", "Tracking to your warehouse"]),
+     ("Embarcar en origen", "Ship from origin"),
+     ("Consolidamos la carga (incluso en contenedores mixtos) y la embarcamos en China. Desde ahí importas tú, con tu agente de aduanas y tu flete; si no tienes, te presentamos uno y te guiamos en el proceso.",
+      "We consolidate the cargo (including mixed containers) and ship it from China. From there you import it, with your own customs broker and freight forwarder; if you don't have one, we introduce you to one and guide you through the process."),
+     (["Consolidación, incluso contenedores mixtos", "Embarque en origen", "Contacto con agente de aduanas y flete, si lo necesitas"],
+      ["Consolidation, including mixed containers", "Shipment from origin", "Introductions to customs brokers and forwarders, if needed"]),
      ["carga-contenedor", "contenedor-puerta"]),
 ]
 
 CTA = ("Conversemos tu proyecto", "Let's talk about your project")
-CTA_NOTE = ("Te acompañamos desde la idea hasta que el producto llega a tu bodega. Te respondemos en 1 día hábil.",
-            "We support you from the idea until the product reaches your warehouse. We reply within 1 business day.")
+CTA_NOTE = ("Te acompañamos desde la idea hasta el embarque en origen. Te respondemos en 1 día hábil.",
+            "We support you from the idea to shipment from origin. We reply within 1 business day.")
 PATH_MSG = ("No te vendemos un servicio suelto: te acompañamos en todo el camino y respondemos por el resultado.",
             "We don't sell you a one-off service: we stay with you the whole way and take responsibility for the result.")
 
@@ -245,7 +245,7 @@ def page_home(lang):
   <div class="proof">
     <div><p class="big">{"Cientos de productos desarrollados" if es else "Hundreds of products developed"}</p><p>{"En ferretería, construcción y herrajes." if es else "In hardware, construction and furniture fittings."}</p></div>
     <div><p class="big">{"Más de 20 años de red" if es else "A network built over 20+ years"}</p><p>{"Ferias, fábricas y contactos construidos en la trayectoria de nuestro equipo." if es else "Trade fairs, factories and contacts built over our team's career."}</p></div>
-    <div><p class="big">{"Un solo socio" if es else "One single partner"}</p><p>{"Respondemos por el resultado completo, de la idea a tu bodega." if es else "We are accountable for the whole result, from idea to your warehouse."}</p></div>
+    <div><p class="big">{"Un solo socio" if es else "One single partner"}</p><p>{"Respondemos por el resultado completo, de la idea al embarque." if es else "We are accountable for the whole result, from idea to shipment."}</p></div>
   </div>
 </div></section>
 
@@ -412,6 +412,13 @@ def page_cases(lang):
 <section class="section"><div class="wrap cases">{"".join(out)}</div></section>
 {cta_band(lang)}'''
 
+# Misión y visión (opción B aprobada por Pato, 01-nov-2026). HGS llega hasta el embarque en origen:
+# el cliente importa con su propio agente de aduanas y flete.
+MISSION = ("Ayudamos a ferreteros, distribuidores e importadores de Latinoamérica a crecer con marcas propias. Desarrollamos sus productos de ferretería, construcción y herrajes en China, y respondemos por todo el proceso hasta el embarque en origen: diseño, fabricación, control de calidad, empaque y branding.",
+           "We help hardware retailers, distributors and importers across Latin America grow with their own brands. We develop their hardware, construction and furniture-fitting products in China and take responsibility for the whole process up to shipment from origin: design, manufacturing, quality control, packaging and branding.")
+VISION = ("Ser el socio de referencia en Latinoamérica para crear marcas propias de ferretería, construcción y herrajes para muebles: el primero en que piensa un importador cuando quiere un producto propio, bien hecho y competitivo.",
+          "To be Latin America's go-to partner for building private labels in hardware, construction and furniture fittings: the first name an importer thinks of when they want a product of their own, well made and competitive.")
+
 def page_about(lang):
     es = lang == "es"
     pillars = [
@@ -423,11 +430,16 @@ def page_about(lang):
     return f'''
 <section class="page-hero"><div class="wrap">
   <p class="eyebrow">{"Nosotros" if es else "About us"}</p>
-  <h1>{"Un solo socio, responsable de la idea a tu bodega." if es else "One partner, accountable from idea to your warehouse."}</h1>
+  <h1>{"Un solo socio, responsable de la idea al embarque." if es else "One partner, accountable from idea to shipment."}</h1>
   <p class="lead">{"HGS (Hardware Global Sourcing) desarrolla marcas propias de ferretería y construcción desde China para el mercado latinoamericano." if es else "HGS (Hardware Global Sourcing) develops hardware and construction private labels from China for the Latin American market."}</p>
 </div></section>
 
-<section class="section"><div class="wrap"><div class="pillars">{pl}</div></div></section>
+<section class="section" aria-label="{"Misión y visión" if es else "Mission and vision"}"><div class="wrap mv">
+  <div><p class="eyebrow">{"Misión" if es else "Mission"}</p><p class="mv-text">{T(lang, MISSION)}</p></div>
+  <div><p class="eyebrow">{"Visión" if es else "Vision"}</p><p class="mv-text">{T(lang, VISION)}</p></div>
+</div></section>
+
+<section class="section rule"><div class="wrap"><div class="pillars">{pl}</div></div></section>
 
 <section class="section rule" aria-labelledby="team"><div class="wrap">
   <div class="sec-head"><p class="eyebrow">{"Equipo" if es else "Team"}</p><h2 id="team">{"Quiénes están detrás" if es else "Who is behind HGS"}</h2></div>

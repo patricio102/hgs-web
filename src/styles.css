@@ -320,3 +320,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .stage-media > :nth-child(2):last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
 .team-photo { margin-bottom: 40px; }
 @media (min-width: 820px) { .people { grid-template-columns: 1fr 1fr; } .person { grid-template-columns: 1fr; } }
+/* Misión y visión (Nosotros) */
+.mv { display: grid; gap: 40px; }
+@media (min-width: 860px) { .mv { grid-template-columns: 1fr 1fr; gap: 72px; } }
+.mv > div { display: grid; gap: 14px; align-content: start; }
+.mv-text { font-family: var(--f-display); font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.45; color: var(--ink); }
