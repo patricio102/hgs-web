@@ -83,6 +83,7 @@ def pend(lang, es, en):
 PHOTOS = {
     "fabrica-sacos": ("Patricio Campos en una f\u00e1brica de sacos de polipropileno en China", "Patricio Campos at a polypropylene sack factory in China", "50% 45%"),
     "feria-canton": ("Patricio Campos en la entrada de la Feria de Cant\u00f3n", "Patricio Campos at the entrance of the Canton Fair", "50% 70%"),
+    "feria-herramientas": ("Patricio Campos con un proveedor de herramientas en la Feria de Cant\u00f3n", "Patricio Campos with a tool supplier at the Canton Fair", "50% 40%"),
     "stand-feria": ("Visita a un proveedor en su stand de la Feria de Cant\u00f3n", "Visiting a supplier at their Canton Fair booth", "50% 8%"),
     "patio-alambre": ("Patricio Campos en el patio de una f\u00e1brica de alambre", "Patricio Campos in the yard of a wire factory", "50% 55%"),
     "bodega-palas": ("Bodega de una f\u00e1brica de palas", "Warehouse of a shovel factory", "50% 35%"),
@@ -227,7 +228,7 @@ def page_home(lang):
     <p class="lead">{"Desarrollamos marcas propias desde China para cadenas, distribuidores y ferreterías latinoamericanas." if es else "We develop private-label brands from China for retail chains, distributors and hardware stores across Latin America."}</p>
     {cta(lang)}
   </div>
-  {photo(lang, "fabrica-sacos", "tall")}
+  {photo(lang, "feria-canton", "tall")}
 </div></section>
 
 <section class="section rule" aria-labelledby="trust"><div class="wrap">
@@ -266,7 +267,7 @@ def page_home(lang):
 </div></section>
 
 <section class="section rule" aria-labelledby="founder"><div class="wrap split">
-  {photo(lang, "feria-canton", "tall")}
+  {photo(lang, "feria-herramientas", "tall")}
   <div class="text">
     <p class="eyebrow" id="founder">{"El fundador" if es else "The founder"}</p>
     <h2>{"Más de 20 años creando marcas propias para el retail ferretero latinoamericano." if es else "Over 20 years creating private labels for Latin American hardware retail."}</h2>
