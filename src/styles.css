@@ -316,3 +316,4 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .fam-text h2 { font-size: clamp(1.45rem, 2.6vw, 1.9rem); }
 .fam-text p { color: var(--muted); }
 .fam-text .meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.photo.prod { background: #fff; border: 1px solid var(--line); } .photo.prod img { object-fit: contain; }

@@ -84,6 +84,8 @@ PHOTOS = {
     "fabrica-sacos": ("Patricio Campos en una f\u00e1brica de sacos de polipropileno en China", "Patricio Campos at a polypropylene sack factory in China", "50% 45%"),
     "feria-canton": ("Patricio Campos en la entrada de la Feria de Cant\u00f3n", "Patricio Campos at the entrance of the Canton Fair", "50% 70%"),
     "feria-herramientas": ("Patricio Campos con un proveedor de herramientas en la Feria de Cant\u00f3n", "Patricio Campos with a tool supplier at the Canton Fair", "50% 40%"),
+    "escala-exhibicion": ("Escalas articuladas DRAVIK exhibidas en góndola", "DRAVIK folding ladders on display in store", "50% 55%"),
+    "empaque-muestras": ("Revisión de empaques terminados, sin marca visible", "Reviewing finished packaging, brand not shown", "50% 60%"),
     "stand-feria": ("Visita a un proveedor en su stand de la Feria de Cant\u00f3n", "Visiting a supplier at their Canton Fair booth", "50% 8%"),
     "patio-alambre": ("Patricio Campos en el patio de una f\u00e1brica de alambre", "Patricio Campos in the yard of a wire factory", "50% 55%"),
     "bodega-palas": ("Bodega de una f\u00e1brica de palas", "Warehouse of a shovel factory", "50% 35%"),
@@ -97,7 +99,7 @@ def photo(lang, key, cls=""):
     pre = "" if lang == "es" else "../"
     if key not in PHOTOS:  # foto de producto cuadrada
         alt = T(lang, PRODUCTS[key])
-        return f'<figure class="photo {cls}"><img src="{pre}img/productos/{key}.webp" alt="{alt}" loading="lazy" decoding="async"></figure>'
+        return f'<figure class="photo prod {cls}"><img src="{pre}img/productos/{key}.webp" alt="{alt}" loading="lazy" decoding="async"></figure>'
     es_alt, en_alt, pos = PHOTOS[key]
     alt = es_alt if lang == "es" else en_alt
     return f'<figure class="photo {cls}"><img src="{pre}img/{key}.webp" alt="{alt}" loading="lazy" decoding="async" style="object-position:{pos}"></figure>'
@@ -164,15 +166,14 @@ STAGES = [
       "We search, assess and audit factories. We request, compare and approve samples."),
      (["Búsqueda de fábricas", "Evaluación y auditoría", "Comparación de muestras", "Aprobación de muestras"],
       ["Factory search", "Assessment and audit", "Sample comparison", "Sample approval"]),
-     ["patio-alambre", ("Muestras en revisión", "Samples under review"), "bodega-palas"]),
+     ["patio-alambre", "bisagra-cazoleta-a", "bodega-palas"]),
     ("brand",
      ("Crear la marca y el empaque", "Create the brand and packaging"),
      ("Nombre, logo, artes de caja, etiquetas y códigos de barra.",
       "Name, logo, box artwork, labels and barcodes."),
      (["Nombre", "Logo", "Artes de caja", "Etiquetas", "Códigos de barra"],
       ["Name", "Logo", "Box artwork", "Labels", "Barcodes"]),
-     [("Arte de caja real, con marcas de clientes tapadas", "Real box artwork, client brands covered"),
-      ("Etiquetas y códigos de barra", "Labels and barcodes"), ("Empaque terminado", "Finished packaging")]),
+     ["escala-exhibicion", "empaque-muestras", "piso-2-peldanos"]),
     ("quality",
      ("Asegurar la calidad", "Assure quality"),
      ("Fichas técnicas, control en producción e inspección antes del embarque.",
@@ -378,7 +379,7 @@ def page_cats(lang):
 CASES = [
     (("Línea completa de herrajes para la marca propia de una cadena chilena", "A complete furniture-hardware line for a Chilean retail chain's private label"),
      [("Herrajes para muebles", "Furniture hardware"), ("Cadena", "Retail chain"), ("Chile", "Chile")],
-     ("Línea de herrajes, sin marca del cliente", "Hardware line, client brand not shown")),
+     "bisagra-cazoleta-b"),
     (("Escalas articuladas de aluminio DRAVIK", "DRAVIK folding aluminum ladders"),
      [("Escalas", "Ladders"), ("Marca propia HGS", "HGS own brand")],
      "escala-obra"),
