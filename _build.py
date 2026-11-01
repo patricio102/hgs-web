@@ -125,6 +125,7 @@ PRODUCTS = {
     "perilla": ("Perillas", "Knobs"),
     "tirador-a": ("Tirador embutido", "Recessed pull handle"),
     "tirador-b": ("Tirador de acero inoxidable", "Stainless steel pull handle"),
+    "parasol": ("Parasol para auto", "Car sun shade"),
     "pata": ("Pata de mueble", "Furniture leg"),
     "cerradura": ("Cerradura de mueble", "Furniture lock"),
     "cargador-usb": ("Cargador USB de escritorio", "Desk USB charger"),
@@ -312,7 +313,7 @@ def page_how(lang):
 <section class="section"><div class="wrap">{"".join(blocks)}</div></section>
 {cta_band(lang)}'''
 
-HOME_RANGE = ["bisagra-cazoleta-b", "corredera-telescopica", "tirador-a", "cargador-inalambrico",
+HOME_RANGE = ["bisagra-cazoleta-b", "corredera-telescopica", "parasol", "cargador-inalambrico",
               "escala-articulada", "clavo-granel", "saco-rojo", "plataforma-a"]
 
 # Familias aprobadas por Pato (01-nov-2026). (nombre es/en, descripción es/en, subproductos es/en, fotos)
