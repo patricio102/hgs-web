@@ -4,6 +4,7 @@
   --blue: #0080B8;      /* principal (logo) */
   --blue-ink: #006a99;  /* azul para texto sobre blanco, mejor contraste */
   --green: #309880;     /* secundario (logo) */
+  --green-ink: #1f7a66; /* verde para texto chico, mejor contraste */
   --ink: #000000;
   --paper: #FFFFFF;
   --muted: #4a5a63;     /* gris con sesgo azul */
@@ -39,7 +40,7 @@ p { margin: 0; }
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 @media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
-.eyebrow { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.eyebrow { font-family: var(--f-mono); font-size: clamp(.95rem, 1.4vw, 1.08rem); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--green-ink); }
 .lead { font-size: 1.2rem; color: var(--muted); max-width: 40em; }
 .prose { max-width: 38em; display: grid; gap: 1em; }
 
@@ -126,7 +127,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .path li:last-child::before { display: none; }
 .path .ic { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--blue); display: grid; place-items: center; background: var(--paper); position: relative; z-index: 1; }
 .path .ic svg { width: 26px; height: 26px; stroke: var(--blue); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.path .num { font-family: var(--f-mono); font-size: .72rem; color: var(--green); letter-spacing: .1em; }
+.path .num { font-family: var(--f-mono); font-size: .9rem; font-weight: 500; color: var(--green-ink); letter-spacing: .08em; }
 .path h3 { margin: 2px 0 6px; font-size: 1.2rem; }
 .path p { color: var(--muted); font-size: .97rem; }
 @media (min-width: 960px) {
@@ -162,7 +163,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .split .text { display: grid; gap: 18px; justify-items: start; }
 
 .founder-name { font-family: var(--f-display); font-size: 1.15rem; }
-.founder-role { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+.founder-role { font-family: var(--f-mono); font-size: .9rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--green-ink); }
 .textlink { font-weight: 500; text-decoration: none; border-bottom: 1px solid currentColor; }
 
 /* Categorías */
@@ -178,7 +179,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (min-width: 900px) { .case { grid-template-columns: 5fr 7fr; gap: 56px; } }
 .case h2 { font-size: clamp(1.45rem, 2.6vw, 1.9rem); }
 .case .meta { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--line); padding: 3px 8px; color: var(--muted); }
+.chip { font-family: var(--f-mono); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--line); padding: 3px 8px; color: var(--muted); }
 .case-body { display: grid; gap: 16px; align-content: start; }
 .case-struct { display: grid; gap: 10px; }
 .case-struct div { display: grid; grid-template-columns: 9em 1fr; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: .95rem; }
@@ -305,7 +306,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 @media (min-width: 760px) { .pgrid-4 { grid-template-columns: repeat(4, 1fr); } }
 .pgrid figure { margin: 0; position: relative; background: #fff; border: 1px solid var(--line); overflow: hidden; }
 .pgrid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
-.pgrid figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 5px 8px; background: rgba(255,255,255,.92); color: var(--ink); font: 500 .74rem/1.3 var(--f-body); }
+.pgrid figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 5px 8px; background: rgba(255,255,255,.92); color: var(--ink); font: 500 .85rem/1.3 var(--f-body); }
 .pgrid .ph { aspect-ratio: 1; }
 .fams { display: grid; }
 .fam { display: grid; gap: 24px; padding-block: 44px; border-top: 1px solid var(--line); }
