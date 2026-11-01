@@ -86,6 +86,7 @@ PHOTOS = {
     "feria-herramientas": ("Patricio Campos con un proveedor de herramientas en la Feria de Cant\u00f3n", "Patricio Campos with a tool supplier at the Canton Fair", "50% 40%"),
     "escala-exhibicion": ("Escalas articuladas DRAVIK exhibidas en góndola", "DRAVIK folding ladders on display in store", "50% 55%"),
     "empaque-muestras": ("Revisión de empaques terminados, sin marca visible", "Reviewing finished packaging, brand not shown", "50% 60%"),
+    "contenedor-puerta": ("Contenedor cargado con pallets, listo para cerrar y sellar", "Container loaded with pallets, ready to be closed and sealed", "50% 50%"),
     "stand-feria": ("Visita a un proveedor en su stand de la Feria de Cant\u00f3n", "Visiting a supplier at their Canton Fair booth", "50% 8%"),
     "patio-alambre": ("Patricio Campos en el patio de una f\u00e1brica de alambre", "Patricio Campos in the yard of a wire factory", "50% 55%"),
     "bodega-palas": ("Bodega de una f\u00e1brica de palas", "Warehouse of a shovel factory", "50% 35%"),
@@ -187,7 +188,7 @@ STAGES = [
       "We consolidate cargo (including mixed containers), coordinate shipping and track it all the way to your warehouse."),
      (["Consolidación, incluso contenedores mixtos", "Coordinación del embarque", "Seguimiento hasta tu bodega"],
       ["Consolidation, including mixed containers", "Shipping coordination", "Tracking to your warehouse"]),
-     ["carga-contenedor", "sacos-bodega"]),
+     ["carga-contenedor", "contenedor-puerta"]),
 ]
 
 CTA = ("Conversemos tu proyecto", "Let's talk about your project")

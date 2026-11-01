@@ -317,3 +317,4 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 .fam-text p { color: var(--muted); }
 .fam-text .meta { display: flex; flex-wrap: wrap; gap: 8px; }
 .photo.prod { background: #fff; border: 1px solid var(--line); } .photo.prod img { object-fit: contain; }
+.stage-media > :nth-child(2):last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
