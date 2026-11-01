@@ -40,7 +40,27 @@ ICONS = {
 CAM = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13.5" r="3.5"/></svg>'
 
 from hgs_logo import LOGO_RINGS, LOGO_HGS, LOGO_TAG, LOGO_LINE  # logo vectorial HGS
-from hgs_herrajes import herrajes_svg  # ilustración del mix de herrajes (caso destacado)
+# Collage del mix de herrajes (caso destacado): fotos reales de producto HGS, sin marcas. src/img/herrajes/
+HERRAJES = [
+    ("corredera-telescopica", "Correderas telescópicas", "Telescopic drawer slides"),
+    ("bisagra-cazoleta", "Bisagras de cazoleta", "Concealed cup hinges"),
+    ("tirador", "Tiradores", "Pull handles"),
+    ("corredera-rodillo", "Correderas de rodillo", "Roller drawer runners"),
+    ("perilla", "Perillas", "Knobs"),
+    ("cerradura", "Cerraduras de mueble", "Furniture locks"),
+    ("pata", "Patas de mueble", "Furniture legs"),
+    ("placa", "Placas de reparación", "Repair plates"),
+    ("plantilla", "Plantillas de instalación", "Installation jigs"),
+]
+
+def herrajes_grid(lang):
+    pre = "" if lang == "es" else "../"
+    title = "Mix de herrajes para muebles" if lang == "es" else "Furniture hardware mix"
+    cells = "".join(
+        f'<figure><img src="{pre}img/herrajes/{k}.webp" alt="{es if lang == "es" else en}" loading="lazy" decoding="async" width="640" height="640">'
+        f'<figcaption>{es if lang == "es" else en}</figcaption></figure>' for k, es, en in HERRAJES)
+    return f'<div class="hx-grid" role="group" aria-label="{title}">{cells}</div>'
+
 
 def logo(full=False, label="HGS Hardware Global Sourcing"):
     if full:
@@ -188,7 +208,7 @@ def page_home(lang):
     <div class="pend-box">{"Detalle del caso por redactar (sin nombre del cliente)." if es else "Case details to be written (without the client's name)."}</div>
     <a class="textlink" href="{href("cases", lang)}">{"Ver casos de éxito" if es else "See case studies"} →</a>
   </div>
-  <figure class="hx-fig">{herrajes_svg(lang)}</figure>
+  <div class="hx-fig">{herrajes_grid(lang)}</div>
 </div></section>
 
 <section class="section rule" aria-labelledby="founder"><div class="wrap split">
