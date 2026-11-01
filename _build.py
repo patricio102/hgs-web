@@ -49,8 +49,8 @@ HERRAJES = [
     ("perilla", "Perillas", "Knobs"),
     ("cerradura", "Cerraduras de mueble", "Furniture locks"),
     ("pata", "Patas de mueble", "Furniture legs"),
-    ("placa", "Placas de reparación", "Repair plates"),
-    ("plantilla", "Plantillas de instalación", "Installation jigs"),
+    ("cargador-usb", "Cargadores USB de escritorio", "Desk USB chargers"),
+    ("guia-bisagras", "Guías de instalación de bisagras", "Hinge drilling jigs"),
 ]
 
 def herrajes_grid(lang):
