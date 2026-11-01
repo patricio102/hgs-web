@@ -87,6 +87,8 @@ PHOTOS = {
     "escala-exhibicion": ("Escalas articuladas DRAVIK exhibidas en góndola", "DRAVIK folding ladders on display in store", "50% 55%"),
     "empaque-muestras": ("Revisión de empaques terminados, sin marca visible", "Reviewing finished packaging, brand not shown", "50% 60%"),
     "contenedor-puerta": ("Contenedor cargado con pallets, listo para cerrar y sellar", "Container loaded with pallets, ready to be closed and sealed", "50% 50%"),
+    "saco-escombros": ("Sacos de escombros en obra, cargados en camioneta", "Debris sacks on a building site, loaded onto a truck", "50% 50%"),
+    "escala-bodega": ("Escala articulada DRAVIK 4x3 en uso como andamio", "DRAVIK 4x3 folding ladder used as a scaffold", "50% 55%"),
     "stand-feria": ("Visita a un proveedor en su stand de la Feria de Cant\u00f3n", "Visiting a supplier at their Canton Fair booth", "50% 8%"),
     "patio-alambre": ("Patricio Campos en el patio de una f\u00e1brica de alambre", "Patricio Campos in the yard of a wire factory", "50% 55%"),
     "bodega-palas": ("Bodega de una f\u00e1brica de palas", "Warehouse of a shovel factory", "50% 35%"),
@@ -107,6 +109,8 @@ def photo(lang, key, cls=""):
 
 def media(lang, item, cls=""):
     """item: clave de PHOTOS (foto real) o par (es, en) para un marcador pendiente."""
+    if item == "collage-herrajes":
+        return f'<div class="hx-fig {cls}">{herrajes_grid(lang)}</div>'
     return photo(lang, item, cls) if isinstance(item, str) else ph(lang, T(lang, item), cls)
 
 # Fotos de producto (zip v2, 01-nov-2026), cuadradas 800 px en src/img/productos/. Sin marcas de clientes;
@@ -343,11 +347,7 @@ CATS = [
     (("Sacos y envases", "Sacks and packaging"),
      ("Sacos de polipropileno tejido en distintos colores, medidas y gramajes.", "Woven polypropylene sacks in different colors, sizes and weights."),
      (["Sacos de polipropileno", "Sacos para escombros"], ["Polypropylene sacks", "Debris sacks"]),
-     ["saco-rojo", "saco-blanco", "fabrica-sacos"]),
-    (("Cerrajería", "Locks and security hardware"),
-     ("Candados, cerraduras y seguridad, con fábricas evaluadas en feria y en planta.", "Padlocks, locks and security, with factories assessed at trade fairs and on site."),
-     (["Candados", "Cerraduras"], ["Padlocks", "Locks"]),
-     ["feria-cerrajeria"]),
+     ["saco-escombros", "saco-rojo", "saco-blanco", "fabrica-sacos"]),
 ]
 
 def cat_media(lang, item):
@@ -380,13 +380,13 @@ def page_cats(lang):
 CASES = [
     (("Línea completa de herrajes para la marca propia de una cadena chilena", "A complete furniture-hardware line for a Chilean retail chain's private label"),
      [("Herrajes para muebles", "Furniture hardware"), ("Cadena", "Retail chain"), ("Chile", "Chile")],
-     "bisagra-cazoleta-b"),
+     "collage-herrajes"),
     (("Escalas articuladas de aluminio DRAVIK", "DRAVIK folding aluminum ladders"),
      [("Escalas", "Ladders"), ("Marca propia HGS", "HGS own brand")],
-     "escala-obra"),
+     "escala-bodega"),
     (("Sacos de polipropileno", "Polypropylene sacks"),
      [("Sacos y envases", "Sacks and packaging")],
-     "sacos-bodega"),
+     "saco-escombros"),
 ]
 
 def page_cases(lang):
