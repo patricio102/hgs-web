@@ -368,3 +368,5 @@ p { margin: 0; }
   * { transition: none !important; }
 }
 @media (min-width: 821px) { .f-top { display: contents; } .f-top > * { position: absolute; } }
+/* El carrusel ocupa todo el cuadro: el menú, los textos y el botón van por encima */
+.f-logo, .f-nav, .f-acts, .f-badge, .f-h1, .f-sub, .f-cta, .f-note1, .f-note2 { z-index: 4; }
