@@ -67,7 +67,7 @@
       cyBase = (track.clientHeight / 2) / u + 6;
       halfVis = 320;
     } else {
-      u = Math.min(window.innerWidth / 1440, window.innerHeight / 1080);
+      u = Math.min(window.innerWidth / 1440, Math.max((window.innerHeight - 84) / 990, 0.8));
       C = 720; R = 706; cyBase = 687;
       halfVis = (window.innerWidth / u) / 2;
     }

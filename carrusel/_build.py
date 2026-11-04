@@ -87,7 +87,7 @@ def topbar(cur):
     return f'''<header class="top">
   <a class="brand" href="{href("home")}" aria-label="HGS · {L("Inicio", "Home")}">{logo()}</a>
   <nav aria-label="{L("Principal", "Main")}">{nav_links(cur)}</nav>
-  <div class="acts"><a class="pill pill-white lang" href="{other_href(cur)}" hreflang="{L("en", "es")}">{L("EN", "ES")}</a><a class="pill pill-green" href="{href("contact")}">{L("Conversemos", "Let&#39;s talk")}</a>{menu_btn()}</div>
+  <div class="acts"><a class="pill pill-white lang" href="{other_href(cur)}" hreflang="{L("en", "es")}">{L("EN", "ES")}</a><a class="pill pill-green" href="{href("contact")}">{L("Conversemos tu proyecto", "Let&#39;s talk about your project")}</a>{menu_btn()}</div>
 </header>'''
 
 
@@ -248,13 +248,8 @@ def home():
            '<span>Private-label hardware,</span> <span><em>developed</em> in China</span>')
     sub = L('<span>Diseñamos, fabricamos y controlamos tu línea de ferretería,</span> <span>construcción y herrajes para muebles. Un solo socio</span> <span>que responde por el resultado completo.</span>',
             '<span>We design, manufacture and inspect your hardware,</span> <span>construction and furniture fittings line. One single partner</span> <span>accountable for the whole result.</span>')
-    hero = f'''<section class="hero" aria-label="{L("Portada", "Cover")}">
+    hero = topbar("home") + f'''<section class="hero" aria-label="{L("Portada", "Cover")}">
 <div class="frame">
-  <div class="f-top">
-    <a class="f-logo" href="{href("home")}" aria-label="HGS">{logo()}</a>
-    <nav class="f-nav" aria-label="{L("Principal", "Main")}">{nav_links("home")}</nav>
-    <div class="f-acts"><a class="pill pill-white lang" href="{other_href("home")}" hreflang="{L("en", "es")}">{L("EN", "ES")}</a><a class="pill pill-green" href="{href("contact")}">{L("Conversemos tu proyecto", "Let&#39;s talk about your project")}</a>{menu_btn()}</div>
-  </div>
   <span class="badge f-badge">{L("Más de 20 años en el mundo ferretero", "Over 20 years in the hardware trade")}</span>
   <h1 class="f-h1" id="main">{h1}</h1>
   <p class="f-sub">{sub}</p>

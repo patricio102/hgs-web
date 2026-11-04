@@ -11,7 +11,7 @@
   --blue: #0080B8;       /* azul del brief, solo como detalle */
   --line: #DDE5DC;
   --deep: #0F3A31;       /* pie y banda final */
-  --u: min(calc(100vw / 1440), calc(100vh / 1080));
+  --u: min(calc(100vw / 1440), max(calc((100vh - 84px) / 990), 0.8px));
   --r: 16px;
   color-scheme: light;
 }
@@ -55,13 +55,13 @@ p { margin: 0; }
 
 /* ---------- Encabezado de páginas interiores ---------- */
 .top {
-  max-width: 1376px; margin: 0 auto; padding: 22px 32px;
+  max-width: 1440px; margin: 0 auto; padding: 22px 36px 22px 37px; position: relative; z-index: 5;
   display: flex; align-items: center; gap: 28px;
 }
 .top .brand { display: flex; align-items: center; text-decoration: none; }
 .top .brand svg { height: 40px; width: auto; }
 .top nav { display: flex; gap: 30px; margin-left: auto; }
-.top nav a { text-decoration: none; font-size: 16px; color: var(--ink); }
+.top nav a { white-space: nowrap; text-decoration: none; font-size: 16px; color: var(--ink); }
 .top nav a[aria-current="page"] { color: var(--green); font-weight: 600; }
 .top nav a:hover { color: var(--green); }
 .top .acts { display: flex; gap: 8px; margin-left: 20px; }
@@ -69,8 +69,8 @@ p { margin: 0; }
 .menu-btn { display: none; }
 
 /* ---------- Hero (Inicio) ---------- */
-.hero { position: relative; height: calc(var(--u) * 1080); min-height: 560px; overflow: hidden; }
-.frame { position: absolute; top: 0; left: 50%; width: calc(var(--u) * 1440); height: calc(var(--u) * 1080); transform: translateX(-50%); }
+.hero { position: relative; height: calc(var(--u) * 990); min-height: 520px; overflow: hidden; }
+.frame { position: absolute; top: calc(var(--u) * -90); left: 50%; width: calc(var(--u) * 1440); height: calc(var(--u) * 1080); transform: translateX(-50%); }
 .frame > * { position: absolute; }
 .f-logo { left: calc(var(--u) * 37); top: calc(var(--u) * 30); }
 .f-logo svg { height: calc(var(--u) * 46); width: auto; display: block; }
@@ -293,7 +293,7 @@ p { margin: 0; }
   .top nav { gap: 18px; }
   .steps { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .top nav, .top .acts .lang { display: none; }
   .top .acts { margin-left: auto; }
   .menu-btn { display: inline-flex; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); align-items: center; justify-content: center; cursor: pointer; }
